@@ -3,6 +3,7 @@
 namespace REB\Grain;
 
 //  GLOBAL TODO - вынести все настройки и списочные данные в GrainSettings!!!
+//  TODO №2 - Обновить скрипт с доработками от Саши (если таковые наличествуют)
 
 class GrainCalculator
 {
