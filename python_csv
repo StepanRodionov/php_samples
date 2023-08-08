@@ -1,0 +1,53 @@
+# This is a sample Python script.
+import csv
+import codecs
+
+# Press ⌃R to execute it or replace it with your code.
+# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+
+nedv = 'data-6050-2023-06-15'
+terr = 'data-98936-2023-07-21'
+nedvcol = 8
+terrcol = 'FieldArea'
+
+
+# decode from 1251 to utf-8
+def decodecsv(name):
+    with open(name + '.csv', 'r') as csv_file:
+        f = codecs.open(name + '.csv', 'r', 'cp1251')
+        u = f.read()  # now the contents have been transformed to a Unicode string
+        print(u)
+        out = codecs.open(name + '.csv', 'w', 'utf-8')
+        out.write(u)  # and now the contents have been output as UTF-8
+
+filename = terr
+col = terrcol
+newname = 'nedv'
+def doall(name, col, newname):
+    with open(name + '.csv', 'r') as csv_file:
+        sqare = 0
+        cnt = 0
+        csv_doc = csv.reader(csv_file, delimiter=';')
+        for row in csv_doc:
+            print(row)
+            break
+            cnt = cnt + 1
+            if cnt < 3:
+                #print(cnt)
+                continue
+            try:
+                cl = float(row[col])
+                #print(cl)
+            except Exception as e:
+                print(e)
+
+            sqare += cl
+
+    print(f'{sqare:,}')
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    doall(filename, col, newname)
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
